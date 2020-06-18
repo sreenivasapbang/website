@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>
+Regular Expression</title>
+</head>
+<body>
+
+Problem: To validate a URL using regular expression
+Solution: 
+
+1. Read string
+2. Apply regular expression pattern for find method of string variable holding url text.
+2a.  Check for all possible patterns of URL e.g www.airtel.in, www.microsoft.com, www.abcnews.live
+3. If match is found, then say string matched else string not matched
+
+
+To Learn Regular expression syntax:  Please check www.w3schools.com
+
+
+Examples to check if URL begins with "www" and ends with "com"
+w{2}[.].+[.]com
+w{2}[.][a-z0-9.\-]+[.]com
+
+Examples to check if URL begins with "www" and ends with any 4 letters
+w{2}[.].+[.][a-z]{2,4}	
+
+
+</body>
+</html>
