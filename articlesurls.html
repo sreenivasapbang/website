@@ -1,0 +1,251 @@
+<html>
+<head>
+	<link rel="shortcut icon" href="#">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<style>
+table { 
+	width: 1250px; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	}
+
+th { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+	width: 1250px;
+	}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+	}
+
+.labels tr td {
+	background-color: #2cc16a;
+	font-weight: bold;
+	color: #fff;
+}
+
+.label tr td label {
+	display: block;
+}
+
+
+<!-- [data-toggle] { -->
+	<!-- display: none; -->
+<!-- } -->
+</style> 
+</head>
+<body>
+<h2>List of URL links for reference</h2>
+<div id="divarticles">
+
+</div>
+<!-- <table> -->
+	<!-- <thead> -->
+		<!-- <tr style='width:950px'> -->
+			<!-- <th>article name and category</th> -->
+			<!-- <th style='width:40%'>article url</th>			 -->
+		<!-- </tr> -->
+	<!-- </thead> -->
+	<!-- <tbody> -->
+		<!-- <tbody class="labels"> -->
+			<!-- <tr> -->
+				<!-- <td colspan="5"> -->
+					<!-- <label for="management">Csharp</label> -->
+					<!-- <input type="checkbox" name="management" id="management" data-toggle="toggle"> -->
+				<!-- </td> -->
+			<!-- </tr> -->
+		<!-- </tbody> -->
+		<!-- <tbody class="hide"> -->
+			<!-- <tr> -->
+				<!-- <td>australia</td> -->
+				<!-- <td>$7,685.00</td> -->
+				<!-- <td>$3,544.00</td> -->
+				<!-- <td>$5,834.00</td> -->
+				<!-- <td>$10,583.00</td> -->
+			<!-- </tr> -->
+		<!-- </tbody> -->
+		<!-- <tbody class="labels"> -->
+			<!-- <tr> -->
+				<!-- <td colspan="5"> -->
+					<!-- <label for="management">Csharp</label> -->
+					<!-- <input type="checkbox" name="management" id="management" data-toggle="toggle"> -->
+				<!-- </td> -->
+			<!-- </tr> -->
+		<!-- </tbody> -->
+		<!-- <tbody class="hide"> -->
+			<!-- <tr> -->
+				<!-- <td>australia</td> -->
+				<!-- <td>$7,685.00</td> -->
+				<!-- <td>$3,544.00</td> -->
+				<!-- <td>$5,834.00</td> -->
+				<!-- <td>$10,583.00</td> -->
+			<!-- </tr> -->
+		<!-- </tbody> -->
+		<!-- <tbody class="labels"> -->
+			<!-- <tr> -->
+				<!-- <td colspan="5"> -->
+					<!-- <label for="test">Test</label> -->
+					<!-- <input type="checkbox" name="test" id="test" data-toggle="toggle"> -->
+				<!-- </td> -->
+			<!-- </tr> -->
+		<!-- </tbody> -->
+		<!-- <tbody class="hide"> -->
+			<!-- <tr> -->
+				<!-- <td>australia</td> -->
+				<!-- <td>$7,685.00</td> -->
+				<!-- <td>$3,544.00</td> -->
+				<!-- <td>$5,834.00</td> -->
+				<!-- <td>$10,583.00</td> -->
+			<!-- </tr> -->
+		<!-- </tbody> -->
+		
+		<!-- <tbody class="labels"> -->
+			<!-- <tr> -->
+				<!-- <td colspan="5"> -->
+					<!-- <label for="management">javascript & jquery</label> -->
+					<!-- <input type="checkbox" name="management" id="management" data-toggle="toggle"> -->
+				<!-- </td> -->
+			<!-- </tr> -->
+		<!-- </tbody> -->
+		<!-- <tbody class="hide"> -->
+			<!-- <tr> -->
+				<!-- <td>australia</td> -->
+				<!-- <td>$7,685.00</td> -->
+				<!-- <td>$3,544.00</td> -->
+				<!-- <td>$5,834.00</td> -->
+				<!-- <td>$10,583.00</td> -->
+			<!-- </tr> -->
+			<!-- <tr> -->
+				<!-- <td>central america</td> -->
+				<!-- <td>$7,685.00</td> -->
+				<!-- <td>$3,544.00</td> -->
+				<!-- <td>$5,834.00</td> -->
+				<!-- <td>$10,583.00</td> -->
+			<!-- </tr> -->
+			<!-- <tr> -->
+				<!-- <td>europe</td> -->
+				<!-- <td>$7,685.00</td> -->
+				<!-- <td>$3,544.00</td> -->
+				<!-- <td>$5,834.00</td> -->
+				<!-- <td>$10,583.00</td> -->
+			<!-- </tr> -->
+			<!-- <tr> -->
+				<!-- <td>middle east</td> -->
+				<!-- <td>$7,685.00</td> -->
+				<!-- <td>$3,544.00</td> -->
+				<!-- <td>$5,834.00</td> -->
+				<!-- <td>$10,583.00</td> -->
+			<!-- </tr> -->
+		<!-- </tbody>		 -->
+	<!-- </tbody> -->
+<!-- </table> -->
+
+
+  </body>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+<!-- <script src="https://cdn.rawgit.com/caldwell/renderjson/master/renderjson.js"></script> -->
+
+  <script>
+  $(document).ready(function() {
+	
+	$('[data-toggle="toggle"]').change(function(){
+		$(this).parents().next('.hide').toggle();
+	});
+	
+	 
+		var tablestart = '<table>	<thead>		<tr style="width:950px"><th>Article Name and Category</th><th style="width:40%">Article URL</th></tr></thead><tbody>';
+			var tablend= '</tbody></table>';
+				var tblstringCategory;
+			var tblstringCatItems = '<tbody class="hide">';
+		
+	$.getJSON("articles.html", function(data){
+	
+	
+			
+			$.each(data, function(keyr, value){
+			
+				
+			if (tblstringCatItems.indexOf(value.Category) == -1)
+			{
+				
+				 tblstringCatItems = '' + tblstringCatItems + '<tbody class="labels"><tr><td colspan="5"><label for="' + value.Category + '">'+ value.Category + '</label>'+
+				'</td></tr></tbody><tbody id="tbodyrows">';
+				
+			}
+			console.log(value.name);
+			var tblstringCatItemsname = '<tr><td>' + value.name + '</td>';
+			var tblstringCatItemsurl = '<td><a href="' + value.url + '">' +  value.url  + '</a></td></tr>';
+			 tblstringCatItems  = tblstringCatItems + tblstringCatItemsname + tblstringCatItemsurl ;
+			
+			});
+			console.log(tablestart + tblstringCatItems + tablend);
+			$("#divarticles").html(tablestart + tblstringCatItems + tablend);
+			
+	});	
+	
+	$(document).delegate('.labels', 'click', function()
+	{
+		$(this).closest('tbody').next("tbody").toggle();	 
+	}); 
+
+		<!-- console.log('inside tblstringCatItems  are ',tablestart + tblstringCatItems + tablend);	
+		
+	
+		<!-- <!-- document.getElementById("divarticles").appendChild( --> -->
+			<!-- <!-- renderjson(data) --> -->
+		<!-- <!-- ); --> -->
+		<!-- //console.log('test '); -->
+			<!-- var tablestart = '<table>	<thead>		<tr style="width:950px"><th>Article Name and Category</th><th style="width:40%">Article URL</th></tr></thead><tbody>'; -->
+			<!-- var tablend= '</tbody></table>'; -->
+			<!-- var blnsamecategory =false; -->
+			<!-- var oldcategory =''; -->
+			<!-- var tblstringCatItems = ''; -->
+			<!-- var tblfulltext=''; -->
+			<!-- var icat=1; -->
+			<!-- var tblstringCategory=''; -->
+		<!-- $.each(data, function(key, value){ -->
+			<!-- //console.log(key + ' is ' + value.name); -->
+			
+			<!-- if (tblstringCatItems.indexOf(value.Category) == -1) -->
+			<!-- { -->
+				
+			 <!-- tblstringCatItems = '' + tblstringCatItems + '<tbody class="labels"><tr><td colspan="5"><label for="' + value.Category + '">'+ value.Category + '</label>'+ -->
+			<!-- '<input type="checkbox" name="' + value.Category + '" id="' + value.Category + '" data-toggle="toggle"></td></tr></tbody><tbody class="hide">'; -->
+			
+			<!-- } -->
+			<!-- var tblstringCatItemsname = '<tr><td>' + value.name + '</td>'; -->
+			<!-- var tblstringCatItemsurl = '<td><a href="' + value.url + '">' +  value.url  + '</a></td></tr>'; -->
+			 <!-- tblstringCatItems  = tblstringCatItems + tblstringCatItemsname + tblstringCatItemsurl ; -->
+			
+			
+			<!-- <!-- if (!blnsamecategory) --> -->
+			<!-- <!-- { --> -->
+				<!-- <!-- tblstringCatItems = tblstringCatItems + '</tbody>' --> -->
+			<!-- <!-- } --> -->
+			
+			<!-- <!-- if (oldcategory === value.Category) --> -->
+			<!-- <!-- { --> -->
+				<!-- <!-- blnsamecategory=true; --> -->
+			<!-- <!-- } --> -->
+			<!-- <!-- else --> -->
+			<!-- <!-- { --> -->
+				<!-- <!-- blnsamecategory=false; --> -->
+			<!-- <!-- } --> -->
+			<!-- <!-- oldcategory = value.Category; --> -->
+		<!-- console.log('inside tblstringCatItems  are ',tablestart + tblstringCatItems + tablend);	 -->
+			$('#divarticles').html(tablestart + tblstringCatItems + tablend);
+		<!-- }); -->
+		
+	<!-- }); -->
+
+	
+});
+  </script>
+</html>
